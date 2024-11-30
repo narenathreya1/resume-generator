@@ -32,3 +32,16 @@ class resume_generator:
             self.page_height -= self.margin
         else:
             self.page_height -= self.line_spacing + additional_space
+# ============================ DEV - 3 ====================================================
+
+    def add_education(self, education_details):
+        self.add_section_header("Education")
+        for education in education_details:
+            self.add_line_space(5)
+            self.pdf_canvas.setFont(self.bold_font, self.body_font_size)
+            self.pdf_canvas.drawString(self.margin, self.page_height, education.get("course"))
+            self.add_line_space()
+            self.pdf_canvas.setFont(self.body_font, self.body_font_size)
+            self.pdf_canvas.drawString(self.margin, self.page_height, education.get("university"))
+            self.add_line_space()
+            self.pdf_canvas.drawString(self.margin, self.page_height, f"{education.get("from_date")} to {education.get("to_date")}")
