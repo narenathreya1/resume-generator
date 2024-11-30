@@ -23,3 +23,12 @@ class resume_generator:
         self.margin                       = 50
         self.line_spacing                 = 15
         self.pdf_canvas                   = canvas.Canvas(self.file_name, pagesize=A4)
+# ============================ DEV - 2 ====================================================
+
+    def add_line_space(self, additional_space=0):
+        if(self.page_height <= self.margin):
+            self.pdf_canvas.showPage()
+            self.page_width, self.page_height = A4
+            self.page_height -= self.margin
+        else:
+            self.page_height -= self.line_spacing + additional_space
